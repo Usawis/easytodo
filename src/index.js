@@ -127,3 +127,11 @@ signUpForm.addEventListener('submit', event => {
         }
     }
 });
+
+const signInWithFacebookButton = document.getElementById('signInWithFacebook');
+
+const signInWithFacebook = () => {
+    const facebookProvider = new firebase.auth.FacebookAuthProvider();
+
+    auth.signInWithPopup
+}
