@@ -11,7 +11,7 @@ import {
     signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
 
-import { FacebookAuthProvider } from "firebase/auth";
+// import { FacebookAuthProvider } from "firebase/auth";
 
 const provider = new FacebookAuthProvider();
 
@@ -351,3 +351,18 @@ getRedirectResult(auth)
     const credential = FacebookAuthProvider.credentialFromError(error);
     // ...
   });
+
+
+  function facebookSignout() {
+    firebase.auth().signOut()
+    
+    .then(function() {
+       console.log('Signout successful!')
+    }, function(error) {
+       console.log('Signout failed')
+    });
+ }
+ 
+ 
+ 
+ 
