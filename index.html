@@ -9,6 +9,7 @@
     <!-- Fontawesome Kit ==> CHANGE it before pushing to github -->
     <!-- PLACE YOUR FONTAWESOME KIT CODE INSIDE SRC -->
     <script src="....." crossorigin="anonymous"></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v14.0&appId=1374699479693822&autoLogAppEvents=1" nonce="aw8VwziO"></script>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -97,6 +98,9 @@
                     </div>
                     <div id="login-invalid-auth"></div>
                     <input type="submit" value="Login" class="btn btn-success btn-lg">
+                    <!-- <input type="submit" value="Login with facebook" class="btn btn-success btn-lg"> -->
+                    <!-- <button id="signInWithFacebook">Login with facebook</button> -->
+                    <div class="fb-login-button" data-width="" data-size="large" data-button-type="continue_with" data-layout="default" data-auto-logout-link="false" data-use-continue-as="false"></div>
                 </form>
                 <div class="wrapper">
                     <div class="divider div-transparent div-dot"></div>
@@ -327,6 +331,30 @@
 
     <!-- Custom scripts -->
     <script type="module" src="./src/index.js"></script>
+
+
+
+<script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '{1374699479693822}',
+        cookie     : true,
+        xfbml      : true,
+        version    : '{v14.0}'
+      });
+        
+      FB.AppEvents.logPageView();   
+        
+    };
+  
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "https://connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 </body>
 </html>
