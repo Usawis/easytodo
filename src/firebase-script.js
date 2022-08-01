@@ -362,6 +362,58 @@ if(window.location.href.includes('todos.html')) {
 //        console.log('Signout failed')
 //     });
 //  }
+
+import { getAuth, onAuthStateChanged, signInWithCredential, signOut, FacebookAuthProvider } from "firebase/auth";
+const auth = getAuth();
+
+function checkLoginState(response) {
+  if (response.authResponse) {
+    // User is signed-in Facebook.
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      unsubscribe();
+      // Check if we are already signed-in Firebase with the correct user.
+      if (!isUserEqual(response.authResponse, firebaseUser)) {
+        // Build Firebase credential with the Facebook auth token.
+        const credential = FacebookAuthProvider.credential(
+            response.authResponse.accessToken);
+
+        // Sign in with the credential from the Facebook user.
+        signInWithCredential(auth, credential)
+          .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+            // ...
+          });
+      } else {
+        // User is already signed-in Firebase with the correct user.
+      }
+    });
+  } else {
+    // User is signed-out of Facebook.
+    signOut(auth);
+  }
+}
+
+import { FacebookAuthProvider } from "firebase/auth";
+
+function isUserEqual(facebookAuthResponse, firebaseUser) {
+  if (firebaseUser) {
+    const providerData = firebaseUser.providerData;
+    for (let i = 0; i < providerData.length; i++) {
+      if (providerData[i].providerId === FacebookAuthProvider.PROVIDER_ID &&
+          providerData[i].uid === facebookAuthResponse.userID) {
+        // We don't need to re-auth the Firebase connection.
+        return true;
+      }
+    }
+  }
+  return false;
+}
  
  
  
