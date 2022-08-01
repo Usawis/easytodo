@@ -300,9 +300,9 @@ auth.languageCode = 'it';
 // To apply the default browser preference instead of explicitly setting it.
 // firebase.auth().useDeviceLanguage();
 
-import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
+// import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
-const auth = getAuth();
+// const auth = getAuth();
 signInWithPopup(auth, provider)
   .then((result) => {
     // The signed-in user info.
@@ -326,14 +326,14 @@ signInWithPopup(auth, provider)
     // ...
   });
 
-  import { getAuth, signInWithRedirect } from "firebase/auth";
+//   import { getAuth, signInWithRedirect } from "firebase/auth";
 
-const auth = getAuth();
+// const auth = getAuth();
 signInWithRedirect(auth, provider);
 
-import { getAuth, getRedirectResult, FacebookAuthProvider } from "firebase/auth";
+// import { getAuth, getRedirectResult, FacebookAuthProvider } from "firebase/auth";
 
-const auth = getAuth();
+// const auth = getAuth();
 getRedirectResult(auth)
   .then((result) => {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
