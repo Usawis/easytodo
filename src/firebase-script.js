@@ -293,7 +293,7 @@ if(window.location.href.includes('todos.html')) {
 
 provider.addScope('user_birthday');
 
-import { getAuth } from "firebase/auth";
+// import { getAuth } from "firebase/auth";
 
 // const auth = getAuth();
 auth.languageCode = 'it';
