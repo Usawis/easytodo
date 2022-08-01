@@ -13,7 +13,7 @@ import {
 
 // import { FacebookAuthProvider } from "firebase/auth";
 
-const provider = new FacebookAuthProvider();
+// const provider = new FacebookAuthProvider();
 
 // firestore imports
 import { 
