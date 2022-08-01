@@ -11,9 +11,9 @@ import {
     signOut,
 } from 'https://www.gstatic.com/firebasejs/9.6.11/firebase-auth.js';
 
-// import { FacebookAuthProvider } from "firebase/auth";
+import { FacebookAuthProvider } from "firebase/auth";
 
-// const provider = new FacebookAuthProvider();
+const provider = new FacebookAuthProvider();
 
 // firestore imports
 import { 
@@ -291,40 +291,40 @@ if(window.location.href.includes('todos.html')) {
     });
 }
 
-// provider.addScope('user_birthday');
+provider.addScope('user_birthday');
 
 // import { getAuth } from "firebase/auth";
 
 // const auth = getAuth();
 auth.languageCode = 'it';
 // To apply the default browser preference instead of explicitly setting it.
-// firebase.auth().useDeviceLanguage();
+firebase.auth().useDeviceLanguage();
 
 // import { getAuth, signInWithPopup, FacebookAuthProvider } from "firebase/auth";
 
 // const auth = getAuth();
-// signInWithPopup(auth, provider)
-//   .then((result) => {
-//     // The signed-in user info.
-//     const user = result.user;
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // The signed-in user info.
+    const user = result.user;
 
-//     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-//     const credential = FacebookAuthProvider.credentialFromResult(result);
-//     const accessToken = credential.accessToken;
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const accessToken = credential.accessToken;
 
-//     // ...
-//   })
-//   .catch((error) => {
-//     // Handle Errors here.
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // The email of the user's account used.
-//     const email = error.customData.email;
-//     // The AuthCredential type that was used.
-//     const credential = FacebookAuthProvider.credentialFromError(error);
+    // ...
+  })
+  .catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
 
-//     // ...
-//   });
+    // ...
+  });
 
 //   import { getAuth, signInWithRedirect } from "firebase/auth";
 
@@ -334,20 +334,20 @@ auth.languageCode = 'it';
 // import { getAuth, getRedirectResult, FacebookAuthProvider } from "firebase/auth";
 
 // const auth = getAuth();
-// getRedirectResult(auth)
-//   .then((result) => {
-//     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-//     const credential = FacebookAuthProvider.credentialFromResult(result);
-//     const token = credential.accessToken;
+getRedirectResult(auth)
+  .then((result) => {
+    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+    const credential = FacebookAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
 
-//     const user = result.user;
-//   }).catch((error) => {
-//     // Handle Errors here.
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // The email of the user's account used.
-//     const email = error.customData.email;
-//     // AuthCredential type that was used.
-//     const credential = FacebookAuthProvider.credentialFromError(error);
-//     // ...
-//   });
+    const user = result.user;
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // AuthCredential type that was used.
+    const credential = FacebookAuthProvider.credentialFromError(error);
+    // ...
+  });
